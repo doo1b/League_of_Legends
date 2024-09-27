@@ -1,3 +1,3 @@
 export default function Home() {
-  return <div> 안녕하세요 next.js 입니다</div>;
+  return <div>메인 페이지</div>;
 }
