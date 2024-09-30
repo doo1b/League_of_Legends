@@ -1,4 +1,4 @@
-// SSR
+// SSG
 const ChampionDetailPage = () => {
   return <div>ChampionDetailPage</div>;
 };
