@@ -24,7 +24,6 @@ const RotationPage = () => {
     fetchRotation();
   }, []);
 
-  console.log(rotation);
   return <div>RotationPage</div>;
 };
 
