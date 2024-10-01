@@ -1,8 +1,8 @@
 "use server";
 
-import { Champion } from "@/types/Champion";
+import { Champion, ChampionDetail } from "@/types/Champion";
 import Item from "@/types/Item";
-import next from "next";
+import { omit } from "lodash";
 
 const fetchVersion = async (): Promise<string> => {
   try {
@@ -57,9 +57,42 @@ export const fetchChampionList = async (): Promise<Champion[]> => {
     ...champion,
     image: {
       ...champion.image,
+      // 이미지 불러오기 편하게 링크로 바로 수정
       full: `https://ddragon.leagueoflegends.com/cdn/${version}/img/champion/${champion.image.full}`,
     },
   }));
 
   return championList;
+};
+
+export const fetchChampionDetail = async (
+  id: string
+): Promise<ChampionDetail> => {
+  const version = await fetchVersion();
+  const res = await fetch(
+    `https://ddragon.leagueoflegends.com/cdn/${version}/data/ko_KR/champion/${id}.json`
+  );
+  const data = await res.json();
+  const champion = data.data[id];
+
+  //불필요한 스킬정보 삭제
+  const formattedSpells = champion.spells.map((spell: any) => ({
+    id: spell.id,
+    name: spell.name,
+    description: spell.description,
+    image: spell.image,
+  }));
+
+  //불필요한 키:밸류 삭제하고 스킬정보 변경
+  const newChampion: ChampionDetail = {
+    ...omit(champion, ["recommended", "blurb", "skins"]),
+    spells: formattedSpells,
+    image: {
+      ...champion.image,
+      //이미지 불러오기 편하게 링크 수정
+      full: `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.id}_0.jpg`,
+    },
+  } as Omit<ChampionDetail, "recommended" | "blurb" | "skins">;
+
+  return newChampion;
 };
