@@ -7,7 +7,7 @@ const API_KEY = process.env.RIOT_API_KEY;
 export async function GET() {
   try {
     if (!API_KEY) {
-      throw new Error("api를 찾을 수 없습니다");
+      throw new Error("api key undefind");
     }
 
     const res = await fetch(API_URL, {

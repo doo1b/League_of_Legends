@@ -1,9 +1,8 @@
-import { fetchItemList, fetchVersion } from "@/utils/serverApi";
+import { fetchItemList } from "@/utils/serverApi";
 
 //SSG
 const ItemsPage = async () => {
-  const version = await fetchVersion();
-  const items = await fetchItemList(version);
+  const items = await fetchItemList();
 
   return (
     <>
