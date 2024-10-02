@@ -97,19 +97,11 @@ export type ChampionDetail = {
   passive: {
     name: string; //패시브이름
     description: string; //패시브설명
-    image: {
-      full: string; //사진주소
-      sprite: string;
-      group: string;
-      x: number;
-      y: number;
-      w: number;
-      h: number;
-    };
+    image: string;
   };
 };
 
-type ChampionSpells = {
+export type OriginalChampionSpells = {
   id: string; //스킬id
   name: string; //스킬이름
   description: string; //간단설명
@@ -122,4 +114,11 @@ type ChampionSpells = {
     w: number;
     h: number;
   };
+};
+
+export type ChampionSpells = {
+  id: string; //스킬id
+  name: string; //스킬이름
+  description: string; //간단설명
+  image: string;
 };

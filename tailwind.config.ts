@@ -9,6 +9,11 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        deepBlue: "#0A323C",
+        lightBlue: "#0AC8B9",
+        midBlue: "#005A82",
+        deepGold: "#785A28",
+        lightGold: "#C8AA6E",
         background: "var(--background)",
         foreground: "var(--foreground)",
       },

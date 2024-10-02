@@ -1,6 +1,11 @@
 "use server";
 
-import { Champion, ChampionDetail } from "@/types/Champion";
+import {
+  Champion,
+  ChampionDetail,
+  ChampionSpells,
+  OriginalChampionSpells,
+} from "@/types/Champion";
 import Item from "@/types/Item";
 import { omit } from "lodash";
 
@@ -76,12 +81,14 @@ export const fetchChampionDetail = async (
   const champion = data.data[id];
 
   //불필요한 스킬정보 삭제
-  const formattedSpells = champion.spells.map((spell: any) => ({
-    id: spell.id,
-    name: spell.name,
-    description: spell.description,
-    image: spell.image,
-  }));
+  const formattedSpells: ChampionSpells[] = champion.spells.map(
+    (spell: OriginalChampionSpells) => ({
+      id: spell.id,
+      name: spell.name,
+      description: spell.description,
+      image: `https://ddragon.leagueoflegends.com/cdn/${version}/img/spell/${spell.image.full}`,
+    })
+  );
 
   //불필요한 키:밸류 삭제하고 스킬정보 변경
   const newChampion: ChampionDetail = {
@@ -91,6 +98,11 @@ export const fetchChampionDetail = async (
       ...champion.image,
       //이미지 불러오기 편하게 링크 수정
       full: `https://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.id}_0.jpg`,
+    },
+    //패시브 이미지도 수정
+    passive: {
+      ...champion.passive,
+      image: `https://ddragon.leagueoflegends.com/cdn/${version}/img/passive/${champion.passive.image.full}`,
     },
   } as Omit<ChampionDetail, "recommended" | "blurb" | "skins">;
 
