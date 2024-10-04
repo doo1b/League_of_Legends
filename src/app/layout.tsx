@@ -20,8 +20,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="kr">
-      <body className={noto.className}>
-        <header className="flex flex-row justify-around h-12 items-center bg-deepBlue text-white">
+      <body className={`${noto.className} `}>
+        <header className="flex flex-row justify-around h-16 items-center bg-deepBlue text-white">
           <Link href="/">
             <div>HOME</div>
           </Link>

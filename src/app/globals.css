@@ -30,4 +30,16 @@ body {
   .flex-col-center {
     @apply flex flex-col items-center;
   }
+
+  .championListBox {
+    @apply grid grid-cols-[repeat(auto-fill,minmax(400px,1fr))] gap-10 justify-items-center mx-20 my-10;
+  }
+
+  .spellImage {
+    @apply rounded-md mx-2 mb-1;
+  }
+
+  .spellName {
+    @apply text-sm font-bold text-deepBlue;
+  }
 }

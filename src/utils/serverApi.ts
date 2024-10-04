@@ -38,6 +38,12 @@ export const fetchItemList = async (): Promise<ItemWithId[]> => {
   const items: ItemWithId[] = Object.entries(data.data).map(([id, item]) => ({
     ...(item as Item),
     id,
+    image: {
+      ...(item as Item).image,
+      full: `https://ddragon.leagueoflegends.com/cdn/${version}/img/item/${
+        (item as Item).image.full
+      }`,
+    },
   }));
 
   return items;

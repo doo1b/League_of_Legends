@@ -1,5 +1,6 @@
 "use client";
 
+import ChampionCard from "@/components/ChampionCard";
 import { Champion } from "@/types/Champion";
 import ChampionRotation from "@/types/ChampionRotation";
 import { getChampionRotation } from "@/utils/riotApi";
@@ -40,11 +41,11 @@ const RotationPage = () => {
 
   return (
     <>
-      {rotation?.map((champion: Champion) => (
-        <div key={champion.key}>
-          <p>{champion.name}</p>
-        </div>
-      ))}
+      <div className="championListBox">
+        {rotation?.map((champion: Champion) => (
+          <ChampionCard key={champion.id} champion={champion}></ChampionCard>
+        ))}
+      </div>
     </>
   );
 };
