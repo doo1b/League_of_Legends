@@ -61,8 +61,8 @@ const ChampionDetailPage = async ({
       <Image
         src={detailChampion.image.full}
         alt={`${detailChampion.name} 일러스트`}
-        width={593}
-        height={350}
+        width={500}
+        height={1000}
         className="ml-14 rounded-xl"
       ></Image>
     </div>

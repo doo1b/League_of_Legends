@@ -12,6 +12,7 @@ const ItemsPage = async () => {
     return withoutTags;
   };
 
+  //아이템 설명에 섞여있는 태그 제거
   const removeHTMLTags = (str: string) => {
     return str.replace(/<\/?[^>]+(>|$)/g, "");
   };
@@ -23,7 +24,7 @@ const ItemsPage = async () => {
           return (
             <div
               key={item.id}
-              className="flex flex-col items-center border-2 w-[250px] px-5 py-5 gap-1"
+              className="flex flex-col items-center w-[250px] px-5 py-5 gap-1 boxBorder"
             >
               <Image
                 src={item.image.full}
@@ -39,24 +40,6 @@ const ItemsPage = async () => {
                 {item.gold.total} 골드
               </p>
               <p className="text-sm">{removeHTMLTags(item.plaintext)}</p>
-              {/* <p className="text-xs font-semibold text-midBlue">
-                {item.into ? "상위 아이템" : "상위 아이템이 없습니다"}
-              </p>
-              <div className="flex flex-row flex-wrap gap-2">
-                {item.into?.map((subItem: string) =>
-                  items
-                    .filter((i) => i.id === subItem)
-                    .map((sub) => (
-                      <Image
-                        src={sub.image.full}
-                        alt={`${item.name}-상위 아이템-${sub.name}`}
-                        key={`${item.name}-상위 아이템-${sub.name}`}
-                        width={25}
-                        height={25}
-                      />
-                    ))
-                )}
-              </div> */}
             </div>
           );
         })}

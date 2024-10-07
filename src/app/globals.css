@@ -32,7 +32,7 @@ body {
   }
 
   .championListBox {
-    @apply grid grid-cols-[repeat(auto-fill,minmax(400px,1fr))] gap-10 justify-items-center mx-20 my-10;
+    @apply grid grid-cols-[repeat(auto-fill,minmax(350px,1fr))] gap-10 justify-items-center mx-20 my-10;
   }
 
   .spellImage {
@@ -41,5 +41,9 @@ body {
 
   .spellName {
     @apply text-sm font-bold text-deepBlue;
+  }
+
+  .boxBorder {
+    @apply  border-[1px]  border-lightGold rounded-md
   }
 }

@@ -39,15 +39,16 @@ const RotationPage = () => {
     return <div>로딩중...</div>;
   }
 
+  if (rotation){
   return (
     <>
       <div className="championListBox">
-        {rotation?.map((champion: Champion) => (
+        {rotation.map((champion: Champion) => (
           <ChampionCard key={champion.id} champion={champion}></ChampionCard>
         ))}
       </div>
     </>
   );
-};
+};}
 
 export default RotationPage;
