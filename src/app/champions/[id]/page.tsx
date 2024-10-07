@@ -1,3 +1,4 @@
+import ChampionSpells from "@/components/ChampionSpells";
 import { fetchChampionDetail } from "@/utils/serverApi";
 import { translateTag } from "@/utils/translateTag";
 import Image from "next/image";
@@ -26,37 +27,8 @@ const ChampionDetailPage = async ({
           ))}
         </div>
         <p className="text-sm text-justify">{detailChampion.lore}</p>
-        <div className="flex flex-row justify-around">
-          <div className="text-center">
-            {/* 패시브 이미지 */}
-            <Image
-              src={detailChampion.passive.image}
-              alt={detailChampion.passive.name}
-              width={40}
-              height={40}
-              className="spellImage"
-            />
-            <p className="spellName">P</p>
-          </div>
-          {/* 스킬 이미지 */}
-          {detailChampion.spells.map((spell) => (
-            <div key={spell.name} className="text-center">
-              <Image
-                src={spell.image}
-                alt={`${spell.id}`}
-                width={40}
-                height={40}
-                className="spellImage"
-              />
-              <p className="spellName">
-                {spell.id.slice(
-                  detailChampion.id.length,
-                  detailChampion.id.length + 1
-                )}
-              </p>
-            </div>
-          ))}
-        </div>
+        {/* 스킬 설명 모달을 위한 클라이언트 컴포넌트 */}
+        <ChampionSpells detailChampion={detailChampion} />
       </div>
       <Image
         src={detailChampion.image.full}

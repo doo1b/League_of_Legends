@@ -114,6 +114,8 @@ export type OriginalChampionSpells = {
     w: number;
     h: number;
   };
+  costBurn: string;
+  cooldownBurn: string;
 };
 
 export type ChampionSpells = {
@@ -121,4 +123,6 @@ export type ChampionSpells = {
   name: string; //스킬이름
   description: string; //간단설명
   image: string;
+  costBurn: string; //마나 소모량
+  cooldownBurn: string; //쿨타임
 };

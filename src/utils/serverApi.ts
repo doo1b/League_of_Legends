@@ -9,6 +9,7 @@ import {
 import Item from "@/types/Item";
 import { omit } from "lodash";
 
+//버전 정보
 const fetchVersion = async (): Promise<string> => {
   try {
     const res = await fetch(
@@ -26,6 +27,7 @@ export interface ItemWithId extends Item {
   id: string; // 아이템 ID 추가
 }
 
+//아이템 목록
 export const fetchItemList = async (): Promise<ItemWithId[]> => {
   const version = await fetchVersion();
 
@@ -49,6 +51,7 @@ export const fetchItemList = async (): Promise<ItemWithId[]> => {
   return items;
 };
 
+//챔피언 목록
 export const fetchChampionList = async (): Promise<Champion[]> => {
   const version = await fetchVersion();
 
@@ -76,6 +79,7 @@ export const fetchChampionList = async (): Promise<Champion[]> => {
   return championList;
 };
 
+// 챔피언 상세 정보
 export const fetchChampionDetail = async (
   id: string
 ): Promise<ChampionDetail> => {
@@ -93,6 +97,8 @@ export const fetchChampionDetail = async (
       name: spell.name,
       description: spell.description,
       image: `https://ddragon.leagueoflegends.com/cdn/${version}/img/spell/${spell.image.full}`,
+      cost: spell.costBurn,
+      cooldownBurn: spell.cooldownBurn,
     })
   );
 
