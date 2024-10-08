@@ -66,16 +66,20 @@
 
 ### 프론트 엔드
 
-![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
+![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white) ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white) 
+
+### API
+
+![Riot Games](https://img.shields.io/badge/riotgames-D32936.svg?style=for-the-badge&logo=riotgames&logoColor=white)
 
 <br/>
 
 ## 🔥 트러블 슈팅
 
 #### 이 호출과 일치하는 오버로드가 없습니다 (타입 오류)
-- fetch 과정에서 계속해서 경고문이 출력됨.
-- api key를 import할 때의 타입 오류.
-- [트러블 슈팅 블로그 작성](https://velog.io/@darong_/Next.js-%EC%9D%B4-%ED%98%B8%EC%B6%9C%EA%B3%BC-%EC%9D%BC%EC%B9%98%ED%95%98%EB%8A%94-%EC%98%A4%EB%B2%84%EB%A1%9C%EB%93%9C%EA%B0%80-%EC%97%86%EC%8A%B5%EB%8B%88%EB%8B%A4)
+- **발생 문제** : fetch 과정에서 계속해서 경고문이 출력됨.
+- **발생 원인** : api key를 import할 때의 타입 오류, headers에는 undefined를 사용할 수 없다.
+- **해결 방법** : [트러블 슈팅 블로그 작성](https://velog.io/@darong_/Next.js-%EC%9D%B4-%ED%98%B8%EC%B6%9C%EA%B3%BC-%EC%9D%BC%EC%B9%98%ED%95%98%EB%8A%94-%EC%98%A4%EB%B2%84%EB%A1%9C%EB%93%9C%EA%B0%80-%EC%97%86%EC%8A%B5%EB%8B%88%EB%8B%A4)
 <br/>
 
 ## 과제를 마치며
