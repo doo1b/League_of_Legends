@@ -6,6 +6,7 @@ import ChampionRotation from "@/types/ChampionRotation";
 import { getChampionRotation } from "@/utils/riotApi";
 import { fetchChampionList } from "@/utils/serverApi";
 import { useEffect, useState } from "react";
+import { SyncLoader } from "react-spinners";
 
 //CSR
 const RotationPage = () => {
@@ -18,8 +19,9 @@ const RotationPage = () => {
       try {
         const data: ChampionRotation = await getChampionRotation();
         const champions = await fetchChampionList();
-        const rotationChampions: Champion[] = champions.filter((champion) =>
-          data.freeChampionIds.includes(Number(champion.key))
+        const rotationChampions: Champion[] = champions.filter(
+          (champion: Champion) =>
+            data.freeChampionIds.includes(Number(champion.key))
         );
         setRotation(rotationChampions);
       } catch (error: any) {
@@ -36,19 +38,23 @@ const RotationPage = () => {
   }
 
   if (loading) {
-    return <div>로딩중...</div>;
+    return (
+      <div className="gap-y-8 flex flex-col justify-center items-center h-[calc(100vh-4rem)]">
+        <SyncLoader color="#C8AA6E" margin={5} />
+        <p>챔피언 목록을 조회중입니다.</p>
+      </div>
+    );
   }
 
-  if (rotation){
   return (
     <>
       <div className="championListBox">
-        {rotation.map((champion: Champion) => (
+        {rotation?.map((champion: Champion) => (
           <ChampionCard key={champion.id} champion={champion}></ChampionCard>
         ))}
       </div>
     </>
   );
-};}
+};
 
 export default RotationPage;
